@@ -1,13 +1,16 @@
 import psycopg
-
+import os
 
 def load(df):
-
+    PASSWORD = os.getenv("POSTGRES_PASSWORD")
+    HOST = os.getenv("POSTGRES_HOST")
+    DB_NAME = os.getenv("POSTGRES_DB_NAME")
+    USER = os.getenv("POSTGRES_USER")
     conn = psycopg.connect(
-        host="localhost",
-        dbname="crypto_market_db",
-        user="postgres",
-        password="password",
+        host=HOST,
+        dbname=DB_NAME,
+        user=USER,
+        password=PASSWORD,
         port=5432
     )
 
